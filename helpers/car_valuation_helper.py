@@ -22,13 +22,13 @@ class CarValuationHelper:
         try:
             reg_number = reg_number.replace(" ", "")
 
-            assert car_details_page.is_element_displayed(car_details_page.input_txt_ENTER_CAR_REGISTRATION, 6), \
+            assert car_details_page.is_element_displayed(car_details_page.input_txt_ENTER_CAR_REGISTRATION), \
                 "Unable to enter vehicle registration number"
             car_details_page.clear_and_fill_in_field(car_details_page.input_txt_ENTER_CAR_REGISTRATION, reg_number, 6)
 
             car_details_page.click(car_details_page.btn_FIND_CAR, 15)
             car_details_page.wait_until_text_to_be_present(car_details_page.btn_FEEDBACK, "Feedback", 15)
-            if car_details_page.is_element_displayed(car_details_page.ro_txt_REGISTRATION, 6):
+            if car_details_page.is_element_displayed(car_details_page.ro_txt_REGISTRATION):
                 try:
                     exp_vehicle_reg = vehicle_data["VARIANT_REG"].replace(" ", "").strip()
 
@@ -54,7 +54,7 @@ class CarValuationHelper:
                 return True
             else:
                 car_details_page.wait_until_text_to_be_present(car_details_page.btn_FEEDBACK, "Feedback", 15)
-                if car_details_page.is_element_displayed(car_details_page.ro_txt_VEHICLE_NOT_FOUND, 6):
+                if car_details_page.is_element_displayed(car_details_page.ro_txt_VEHICLE_NOT_FOUND):
                     c_logger.info(f"Vehicle registration number not found - {reg_number}")
                     reg_not_found_list.append(reg_number)
                     return False
@@ -80,12 +80,12 @@ class CarValuationHelper:
                                                          6)
                 car_details_page.click(car_details_page.btn_FIND_CAR, 15)
                 car_details_page.wait_until_text_to_be_present(car_details_page.btn_FEEDBACK, "Feedback", 15)
-                if car_details_page.is_element_displayed(car_details_page.ro_txt_REGISTRATION, 6):
+                if car_details_page.is_element_displayed(car_details_page.ro_txt_REGISTRATION):
                     assert reg_number == car_details_page.get_text(car_details_page.ro_txt_REGISTRATION), \
                        f"Vehicle registration does not match for reg number - {reg_number}"
                 else:
                     car_details_page.wait_until_text_to_be_present(car_details_page.btn_FEEDBACK, "Feedback", 15)
-                    if car_details_page.is_element_displayed(car_details_page.ro_txt_VEHICLE_NOT_FOUND, 6):
+                    if car_details_page.is_element_displayed(car_details_page.ro_txt_VEHICLE_NOT_FOUND):
                         c_logger.info(f"Vehicle registration number not found - {reg_number}")
 
         except AssertionError:
