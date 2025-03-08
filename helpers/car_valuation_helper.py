@@ -43,7 +43,7 @@ class CarValuationHelper:
 
                     c_logger.info(f"Verifying Year - {exp_vehicle_reg}")
                     assert car_details_page.get_text(car_details_page.ro_txt_YEAR, 6) == vehicle_data["YEAR"], \
-                        f"Data Mismatch found for {vehicle_data["YEAR"]}"
+                        f"Data Mismatch found for f{vehicle_data['YEAR']}"
 
                 except AssertionError as e:
                     c_logger.warning(f"Data mismatch found - str{e}")
