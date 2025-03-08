@@ -1,0 +1,26 @@
+#Byte-compiled / optimizwd / DLL files
+__pycache__/
+*.py[cod]
+*.zip
+*$py.class
+*.exe
+
+#Distribution / packaging
+.Python
+
+#virtualenv
+.venv
+venv/
+ENV/
+
+#IDE settings
+.idea/
+.vscode/
+local.log
+.pytest_cache
+
+#report
+reports/
+
+#pyenv
+.python-version
